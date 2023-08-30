@@ -4,10 +4,7 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../../app';
-import Example from '../../database/models/ExampleModel';
-
-import { Response } from 'superagent';
-import Team from '../../database/models/team.model';
+import Team from '../../database/models/TeamModel';
 import teamsMocks from '../mocks/teams.mocks';
 
 
