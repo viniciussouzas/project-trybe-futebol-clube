@@ -24,4 +24,10 @@ export default class UsersService {
 
     return { status: 'SUCCESSFUL', data: { token } };
   }
+
+  public async findRole(data: IUsers) {
+    const user = await this.usersModel.findOne(data.email);
+
+    return { status: 'SUCCESSFUL', data: { role: user?.role } };
+  }
 }

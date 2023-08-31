@@ -12,4 +12,11 @@ export default class UsersController {
 
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async findRoleByEmail(req: Request, res: Response): Promise<Response> {
+    const { user } = req.body;
+    const { status, data } = await this.usersService.findRole(user);
+
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }
