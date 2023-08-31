@@ -16,8 +16,8 @@ export default class UsersService {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
 
-    if (!bcrypt.compare(data.password, user.password)) {
-      return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password ' } };
+    if (!bcrypt.compareSync(data.password, user.password)) {
+      return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
 
     const token = JWT.sign({ email: user.email });
