@@ -18,7 +18,7 @@ describe('Users tests', () => {
   it('Testa se a função findOne retorna o status e data esperados, ao inserir login válido', async function() {
     sinon.stub(User, 'findOne').resolves(usersMocks.mockToken as any);
 
-    const { status, body } = await chai.request(app).post('/users');
+    const { status, body } = await chai.request(app).post('/login');
 
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal(usersMocks.mockToken);
