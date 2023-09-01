@@ -26,12 +26,21 @@ export default class MatchesModel implements IMatchesModel {
     return database;
   }
 
-  async update(id: number): Promise<boolean | void> {
+  async endMatch(id: number): Promise<boolean | void> {
     const database = await this.findById(id);
 
     if (!database) return false;
 
     await this.model.update({ inProgress: false }, { where: { id } });
+    return true;
+  }
+
+  async update(id: number, body: Partial<IMatches>): Promise<boolean | void> {
+    const database = await this.findById(id);
+
+    if (!database) return false;
+
+    await this.model.update({ ...body }, { where: { id } });
     return true;
   }
 }
