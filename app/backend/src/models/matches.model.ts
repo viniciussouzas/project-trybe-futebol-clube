@@ -19,4 +19,19 @@ export default class MatchesModel implements IMatchesModel {
 
     return database;
   }
+
+  async findById(id: number): Promise<IMatches | null> {
+    const database = await this.model.findByPk(id);
+
+    return database;
+  }
+
+  async update(id: number): Promise<boolean | void> {
+    const database = await this.findById(id);
+
+    if (!database) return false;
+
+    await this.model.update({ inProgress: false }, { where: { id } });
+    return true;
+  }
 }

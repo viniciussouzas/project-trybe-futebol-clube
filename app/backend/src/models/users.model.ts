@@ -6,10 +6,8 @@ export default class UsersModel implements IUsersModel {
   private model = User;
 
   async findOne(email: string): Promise<IUsers | null> {
-    const user = await this.model.findOne({ where: { email } });
+    const database = await this.model.findOne({ where: { email } });
 
-    if (!user) return null;
-
-    return user;
+    return database;
   }
 }
