@@ -37,6 +37,21 @@ export default class MatchesService {
   }
 
   public async create(body: Partial<IMatches>) {
+    const { homeTeamId, awayTeamId } = body;
+
+    if (homeTeamId === awayTeamId) {
+      return {
+        status: 'UNPROCESSABLE',
+        data: { message: 'It is not possible to create a match with two equal teams' } };
+    }
+
+    const homeTeam = await this.matchesModel.findById(Number(homeTeamId));
+    const awayTeam = await this.matchesModel.findById(Number(awayTeamId));
+
+    if (!homeTeam || !awayTeam) {
+      return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
+    }
+
     const match = await this.matchesModel.create(body);
 
     return { status: 'CREATED', data: match };
