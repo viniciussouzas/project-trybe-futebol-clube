@@ -35,4 +35,10 @@ export default class MatchesService {
 
     return { status: 'SUCCESSFUL', data: updtMatch };
   }
+
+  public async create(body: Partial<IMatches>) {
+    const match = await this.matchesModel.create(body);
+
+    return { status: 'CREATED', data: match };
+  }
 }

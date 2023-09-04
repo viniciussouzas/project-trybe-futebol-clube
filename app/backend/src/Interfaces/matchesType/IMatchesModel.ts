@@ -5,4 +5,5 @@ export default interface IMatchesModel {
   findById(id: number): Promise<IMatches | null>,
   endMatch(id: number): Promise<boolean | void>,
   update(id: number, body: Partial<IMatches>): Promise<boolean | void>,
+  create(body: Partial<IMatches>): Promise<IMatches>,
 }

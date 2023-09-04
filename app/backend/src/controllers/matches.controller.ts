@@ -34,4 +34,12 @@ export default class MatchesController {
 
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async createMatch(req: Request, res: Response): Promise<Response> {
+    const matchObj = req.body;
+
+    const { status, data } = await this.matchesService.create(matchObj);
+
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

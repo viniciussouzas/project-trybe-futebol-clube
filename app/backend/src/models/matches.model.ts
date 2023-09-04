@@ -43,4 +43,11 @@ export default class MatchesModel implements IMatchesModel {
     await this.model.update({ ...body }, { where: { id } });
     return true;
   }
+
+  async create(body: Partial<IMatches>): Promise<IMatches> {
+    const match = { ...body, inProgress: true };
+
+    const database = await this.model.create(match);
+    return database;
+  }
 }
