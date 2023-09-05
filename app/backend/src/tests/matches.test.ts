@@ -27,7 +27,7 @@ describe('Matches tests', () => {
     expect(body.length).to.be.equal(2);
   });
 
-  it('Testa se a função findAll com filtro retorna o status e data esperados', async function() {
+  it('Testa se a função findAll com o filtro retorna o status e data esperados', async function() {
     sinon.stub(Match, 'findAll').resolves(matchesMocks.matchesInProgress as any);
 
     const { status, body } = await chai.request(app).get('/matches?inProgress=true');
