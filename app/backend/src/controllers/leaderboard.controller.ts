@@ -7,7 +7,7 @@ export default class LeaderboardController {
     private leaderboardService = new LeaderboardService(),
   ) {}
 
-  public async findAll(req: Request, res: Response, type: 'home' | 'away'): Promise<Response> {
+  public async findAll(_req: Request, res: Response, type: 'home' | 'away'): Promise<Response> {
     const { status, data } = await this.leaderboardService.findAll(type);
 
     return res.status(mapStatusHTTP(status)).json(data);
